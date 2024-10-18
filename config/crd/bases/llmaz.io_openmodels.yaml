@@ -113,7 +113,9 @@ spec:
                       allowPatterns:
                         description: AllowPatterns refers to only files matching at
                           least one pattern are downloaded.
-                        type: string
+                        items:
+                          type: string
+                        type: array
                       filename:
                         description: |-
                           Filename refers to a specified model file rather than the whole repo.
@@ -124,7 +126,9 @@ spec:
                       ignorePatterns:
                         description: IgnorePatterns refers to files matching any of
                           the patterns are not downloaded.
-                        type: string
+                        items:
+                          type: string
+                        type: array
                       modelID:
                         description: |-
                           ModelID refers to the model identifier on model hub,

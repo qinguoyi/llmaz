@@ -39,7 +39,12 @@ if __name__ == "__main__":
         if not model_id:
             raise EnvironmentError(f"Environment variable '{model_id}' not found.")
         hub = HubFactory.new(hub_name)
-        hub.load_model(model_id, model_file_name, revision, model_allow_patterns, model_ignore_patterns)
+        model_allow_patterns_list, model_ignore_patterns_list = [], []
+        if model_allow_patterns:
+            model_allow_patterns_list = model_allow_patterns.split(',')
+        if model_ignore_patterns:
+            model_ignore_patterns_list = model_ignore_patterns.split(',')
+        hub.load_model(model_id, model_file_name, revision, model_allow_patterns_list, model_ignore_patterns_list)
     elif model_source_type == "objstore":
         provider = os.getenv(ENV_OBJ_PROVIDER)
         endpoint = os.getenv(ENV_OBJ_ENDPOINT)

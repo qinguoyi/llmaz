@@ -17,11 +17,10 @@ limitations under the License.
 package modelSource
 
 import (
-	"fmt"
+	corev1 "k8s.io/api/core/v1"
+
 	coreapi "github.com/inftyai/llmaz/api/core/v1alpha1"
 	"github.com/inftyai/llmaz/pkg/util"
-	corev1 "k8s.io/api/core/v1"
-	"strings"
 )
 
 const (
@@ -60,20 +59,6 @@ type ModelSourceProvider interface {
 
 func NewModelSourceProvider(model *coreapi.OpenModel) ModelSourceProvider {
 	if model.Spec.Source.ModelHub != nil {
-
-		// fileName should not in ignorePatterns
-		if model.Spec.Source.ModelHub.Filename != nil && model.Spec.Source.ModelHub.IgnorePatterns != nil {
-			filename := *model.Spec.Source.ModelHub.Filename
-			ignorePatterns := strings.Split(*model.Spec.Source.ModelHub.IgnorePatterns, ",")
-			if filename != "" && len(ignorePatterns) > 0 {
-				for _, pattern := range ignorePatterns {
-					if filename == pattern {
-						panic(fmt.Sprintf("fileName %s should not in ignorePatterns %+v", filename, ignorePatterns))
-					}
-				}
-			}
-		}
-
 		return &ModelHubProvider{
 			modelName:           model.Name,
 			modelID:             model.Spec.Source.ModelHub.ModelID,

@@ -33,7 +33,7 @@ controllerManager:
         - ALL
     image:
       repository: inftyai/llmaz
-      tag: v0.0.7
+      tag: t-0.5
     resources:
       limits:
         cpu: 500m
@@ -41,6 +41,8 @@ controllerManager:
       requests:
         cpu: 10m
         memory: 64Mi
+  podSecurityContext:
+    runAsNonRoot: true
   replicas: 1
   serviceAccount:
     annotations: {}

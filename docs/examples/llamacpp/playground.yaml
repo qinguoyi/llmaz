@@ -1,7 +1,7 @@
 apiVersion: inference.llmaz.io/v1alpha1
 kind: Playground
 metadata:
-  name: qwen2-0--5b
+  name: qwen2-0--5b-read
 spec:
   replicas: 1
   modelClaim:

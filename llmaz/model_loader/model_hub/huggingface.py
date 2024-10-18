@@ -52,11 +52,11 @@ class Huggingface(ModelHub):
         )
 
         if filename:
-            if filename not in allow_patterns and filename not in ignore_patterns:
-                allow_patterns.append(filename)
+            allow_patterns.append(filename)
+            local_dir = MODEL_LOCAL_DIR
 
         snapshot_download(
-            reop_id=model_id,
+            repo_id=model_id,
             revision=revision,
             local_dir=local_dir,
             allow_patterns=allow_patterns,

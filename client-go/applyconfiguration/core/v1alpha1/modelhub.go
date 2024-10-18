@@ -20,12 +20,12 @@ package v1alpha1
 // ModelHubApplyConfiguration represents a declarative configuration of the ModelHub type for use
 // with apply.
 type ModelHubApplyConfiguration struct {
-	Name           *string `json:"name,omitempty"`
-	ModelID        *string `json:"modelID,omitempty"`
-	Filename       *string `json:"filename,omitempty"`
-	Revision       *string `json:"revision,omitempty"`
-	AllowPatterns  *string `json:"allowPatterns,omitempty"`
-	IgnorePatterns *string `json:"ignorePatterns,omitempty"`
+	Name           *string  `json:"name,omitempty"`
+	ModelID        *string  `json:"modelID,omitempty"`
+	Filename       *string  `json:"filename,omitempty"`
+	Revision       *string  `json:"revision,omitempty"`
+	AllowPatterns  []string `json:"allowPatterns,omitempty"`
+	IgnorePatterns []string `json:"ignorePatterns,omitempty"`
 }
 
 // ModelHubApplyConfiguration constructs a declarative configuration of the ModelHub type for use with
@@ -66,18 +66,22 @@ func (b *ModelHubApplyConfiguration) WithRevision(value string) *ModelHubApplyCo
 	return b
 }
 
-// WithAllowPatterns sets the AllowPatterns field in the declarative configuration to the given value
-// and returns the receiver, so that objects can be built by chaining "With" function invocations.
-// If called multiple times, the AllowPatterns field is set to the value of the last call.
-func (b *ModelHubApplyConfiguration) WithAllowPatterns(value string) *ModelHubApplyConfiguration {
-	b.AllowPatterns = &value
+// WithAllowPatterns adds the given value to the AllowPatterns field in the declarative configuration
+// and returns the receiver, so that objects can be build by chaining "With" function invocations.
+// If called multiple times, values provided by each call will be appended to the AllowPatterns field.
+func (b *ModelHubApplyConfiguration) WithAllowPatterns(values ...string) *ModelHubApplyConfiguration {
+	for i := range values {
+		b.AllowPatterns = append(b.AllowPatterns, values[i])
+	}
 	return b
 }
 
-// WithIgnorePatterns sets the IgnorePatterns field in the declarative configuration to the given value
-// and returns the receiver, so that objects can be built by chaining "With" function invocations.
-// If called multiple times, the IgnorePatterns field is set to the value of the last call.
-func (b *ModelHubApplyConfiguration) WithIgnorePatterns(value string) *ModelHubApplyConfiguration {
-	b.IgnorePatterns = &value
+// WithIgnorePatterns adds the given value to the IgnorePatterns field in the declarative configuration
+// and returns the receiver, so that objects can be build by chaining "With" function invocations.
+// If called multiple times, values provided by each call will be appended to the IgnorePatterns field.
+func (b *ModelHubApplyConfiguration) WithIgnorePatterns(values ...string) *ModelHubApplyConfiguration {
+	for i := range values {
+		b.IgnorePatterns = append(b.IgnorePatterns, values[i])
+	}
 	return b
 }

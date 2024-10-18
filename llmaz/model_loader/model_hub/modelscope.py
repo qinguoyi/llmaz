@@ -50,8 +50,8 @@ class ModelScope(ModelHub):
         )
 
         if filename:
-            if filename not in allow_patterns and filename not in ignore_patterns:
-                allow_patterns.append(filename)
+            allow_patterns.append(filename)
+            local_dir = MODEL_LOCAL_DIR
 
         snapshot_download(
             model_id=model_id,

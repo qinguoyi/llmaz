@@ -34,8 +34,8 @@ type ModelHubProvider struct {
 	modelHub            string
 	fileName            *string
 	modelRevision       *string
-	modelAllowPatterns  *string
-	modelIgnorePatterns *string
+	modelAllowPatterns  []string
+	modelIgnorePatterns []string
 }
 
 func (p *ModelHubProvider) ModelName() string {
@@ -93,12 +93,12 @@ func (p *ModelHubProvider) InjectModelLoader(template *corev1.PodTemplateSpec, i
 	}
 	if p.modelAllowPatterns != nil {
 		initContainer.Env = append(initContainer.Env,
-			corev1.EnvVar{Name: "MODEL_ALLOW_PATTERNS", Value: *p.modelAllowPatterns},
+			corev1.EnvVar{Name: "MODEL_ALLOW_PATTERNS", Value: strings.Join(p.modelAllowPatterns, ",")},
 		)
 	}
 	if p.modelIgnorePatterns != nil {
 		initContainer.Env = append(initContainer.Env,
-			corev1.EnvVar{Name: "MODEL_IGNORE_PATTERNS", Value: *p.modelIgnorePatterns},
+			corev1.EnvVar{Name: "MODEL_IGNORE_PATTERNS", Value: strings.Join(p.modelIgnorePatterns, ",")},
 		)
 	}
 	initContainer.Env = append(initContainer.Env,

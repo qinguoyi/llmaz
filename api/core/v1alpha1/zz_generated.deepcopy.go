@@ -129,13 +129,13 @@ func (in *ModelHub) DeepCopyInto(out *ModelHub) {
 	}
 	if in.AllowPatterns != nil {
 		in, out := &in.AllowPatterns, &out.AllowPatterns
-		*out = new(string)
-		**out = **in
+		*out = make([]string, len(*in))
+		copy(*out, *in)
 	}
 	if in.IgnorePatterns != nil {
 		in, out := &in.IgnorePatterns, &out.IgnorePatterns
-		*out = new(string)
-		**out = **in
+		*out = make([]string, len(*in))
+		copy(*out, *in)
 	}
 }
 
