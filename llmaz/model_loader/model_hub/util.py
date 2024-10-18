@@ -32,3 +32,10 @@ def get_folder_total_size(folder_path: str) -> float:
 
     total_size_gb = total_size / (1024 ** 3)
     return total_size_gb
+
+def list_files(directory):
+    # 遍历目录及其子目录
+    for root, dirs, files in os.walk(directory):
+        for file in files:
+            # 打印文件的完整路径
+            print(os.path.join(root, file))

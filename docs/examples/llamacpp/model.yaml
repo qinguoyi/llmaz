@@ -9,8 +9,7 @@ spec:
       modelID: Qwen/Qwen2-0.5B-Instruct-GGUF
 #      filename: qwen2-0_5b-instruct-q5_k_m.gguf
       allowPatterns:
-        - LICECSE
-        - README.md
+        - "*"
       ignorePatterns:
-        - README.md
+        - "*.gguf"
     # uri: oss://llmaz.oss-ap-southeast-1-internal.aliyuncs.com/models/qwen2-0_5b-instruct-q5_k_m.gguf

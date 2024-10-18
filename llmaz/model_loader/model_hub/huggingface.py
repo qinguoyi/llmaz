@@ -24,7 +24,7 @@ from llmaz.model_loader.model_hub.model_hub import (
     ModelHub,
 )
 from llmaz.util.logger import Logger
-from llmaz.model_loader.model_hub.util import get_folder_total_size
+from llmaz.model_loader.model_hub.util import get_folder_total_size, list_files
 
 from typing import Optional, List
 
@@ -64,4 +64,5 @@ class Huggingface(ModelHub):
         )
 
         total_size = get_folder_total_size(local_dir)
+        list_files(local_dir)
         Logger.info(f"The total size of {local_dir} is {total_size: .2f} GB")

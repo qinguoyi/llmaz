@@ -63,7 +63,7 @@ IMAGE_REGISTRY ?= inftyai
 IMAGE_NAME ?= llmaz
 IMAGE_REPO := $(IMAGE_REGISTRY)/$(IMAGE_NAME)
 GIT_TAG ?= $(shell git describe --tags --dirty --always)
-IMG ?= $(IMAGE_REPO):t-0.5
+IMG ?= $(IMAGE_REPO):t-0.6
 BUILDER_IMAGE ?= golang:$(GO_VERSION)
 KIND_CLUSTER_NAME ?= kind
 

@@ -17,5 +17,5 @@ limitations under the License.
 package pkg
 
 const (
-	LOADER_IMAGE = "model-loader:0.5"
+	LOADER_IMAGE = "model-loader:0.6"
 )
